@@ -12,16 +12,6 @@ import { cn } from "@/lib/utils";
 // In a real scenario, these would be paths to images in public/images/hero/
 const SLIDES = [
   {
-    id: 1,
-    heading: "Zimbabwe - The World's #1 Destination to Visit in 2025",
-    subheading: "According to Forbes Travel Guide",
-    ctaText: "Discover Why",
-    ctaLink: "#zimbabwe-features",
-    image: "/images/hero/hero-1.jpg",
-    overlayColor: "from-black/60 via-transparent to-transparent",
-    alt: "Majestic Victoria Falls landscape",
-  },
-  {
     id: 2,
     heading: "Bulawayo's #1 Boutique Hotel",
     subheading: "Voted by ZimCEO Network 2025",
@@ -30,6 +20,16 @@ const SLIDES = [
     image: "/images/hero/hero-2.jpeg",
     overlayColor: "from-primary/40 via-transparent to-transparent", // Terracotta hint
     alt: "Elegant hotel interior",
+  },
+  {
+    id: 1,
+    heading: "Zimbabwe - The World's #1 Destination to Visit in 2025",
+    subheading: "According to Forbes Travel Guide",
+    ctaText: "Discover Why",
+    ctaLink: "#zimbabwe-features",
+    image: "/images/hero/hero-1.jpg",
+    overlayColor: "from-black/60 via-transparent to-transparent",
+    alt: "Majestic Victoria Falls landscape",
   },
   {
     id: 3,

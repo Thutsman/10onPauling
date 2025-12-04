@@ -66,7 +66,7 @@ export default function StatsCards() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-20px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10"
         >
           {stats.map((stat, index) => (

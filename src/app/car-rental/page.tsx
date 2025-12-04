@@ -32,7 +32,7 @@ export default function CarRentalPage() {
                    name="Toyota Land Cruiser"
                    category="Executive"
                    price="$120"
-                   image="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop"
+                   image="/images/car-rental/toyota-land-cruiser.jpeg"
                    specs={{ seats: 7, transmission: "Auto", fuel: "Diesel" }}
                    features={["4WD Capability", "Leather Interior", "Climate Control", "Safari Ready"]}
                    idealFor="Safari trips, family travel, Victoria Falls transfers"
@@ -41,29 +41,10 @@ export default function CarRentalPage() {
                    name="Toyota Fortuner"
                    category="Standard SUV"
                    price="$100"
-                   image="https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?q=80&w=2072&auto=format&fit=crop"
+                   image="/images/car-rental/toyota-fortuner.jpeg"
                    specs={{ seats: 7, transmission: "Auto", fuel: "Diesel" }}
                    features={["4WD Capability", "Modern Tech", "High Clearance", "Spacious Boot"]}
                    idealFor="Road trips, comfortable touring, mixed terrain"
-                 />
-               </div>
-            </section>
-
-            {/* Safari Vehicles */}
-            <section>
-               <h2 className="font-heading text-2xl font-bold text-secondary mb-6 flex items-center gap-2">
-                 Safari & Adventure
-                 <span className="text-sm font-normal text-muted-foreground bg-muted px-2 py-1 rounded-md">Off-Road Ready</span>
-               </h2>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <VehicleCard
-                   name="Ford Ranger 4x4"
-                   category="Adventure"
-                   price="$110"
-                   image="https://images.unsplash.com/photo-1609521263047-f8f205293f24?q=80&w=2070&auto=format&fit=crop"
-                   specs={{ seats: 5, transmission: "Auto", fuel: "Diesel" }}
-                   features={["Heavy Duty 4WD", "Roof Rack", "All-Terrain Tires", "Long Range Tank"]}
-                   idealFor="Hwange, Matobo, self-drive safaris"
                  />
                </div>
             </section>
@@ -79,7 +60,7 @@ export default function CarRentalPage() {
                    name="Toyota Corolla Cross"
                    category="Urban"
                    price="$60"
-                   image="https://images.unsplash.com/photo-1623869675781-80aa31012a5a?q=80&w=2070&auto=format&fit=crop"
+                   image="/images/car-rental/toyota-corolla-cross.jpeg"
                    specs={{ seats: 5, transmission: "Auto", fuel: "Petrol" }}
                    features={["Fuel Efficient", "Easy Parking", "CarPlay/Android Auto", "Comfortable"]}
                    idealFor="Bulawayo city driving, short day trips"

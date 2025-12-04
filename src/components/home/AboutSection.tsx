@@ -23,12 +23,12 @@ export default function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.7 }}
             className="relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
-              src="/images/about/about-hotel.jpg"
+              src="/images/about/about-hotel.jpeg"
               alt="10 On Pauling Hotel Exterior - Luxury boutique hotel in Bulawayo with elegant architecture and pool"
               fill
               className="object-cover"
@@ -42,7 +42,7 @@ export default function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="space-y-6"
           >
@@ -60,7 +60,7 @@ export default function AboutSection() {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-20px" }}
                   transition={{ delay: 0.3 + index * 0.1 }}
                   className="flex items-center gap-3 p-4 rounded-lg bg-muted/50"
                 >

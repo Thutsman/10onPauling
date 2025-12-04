@@ -43,7 +43,7 @@ export default function BowerySection() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.7 }}
             className="bg-background/95 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-primary/20"
           >
@@ -73,7 +73,7 @@ export default function BowerySection() {
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-20px" }}
                   transition={{ delay: index * 0.1 }}
                   className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium border border-primary/20"
                 >

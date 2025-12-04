@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Award } from "lucide-react";
 import NewsletterSignup from "@/components/shared/NewsletterSignup";
 
@@ -24,8 +25,16 @@ export default function Footer() {
           {/* About Section */}
           <div className="space-y-6">
             <div className="mb-4">
-              {/* Logo Placeholder */}
-              <h3 className="font-heading text-3xl font-bold text-accent tracking-wide">10 ON PAULING</h3>
+              <Link href="/" className="inline-block">
+                <Image
+                  src="/images/logo/white-logo.svg"
+                  alt="10 On Pauling Logo"
+                  width={800}
+                  height={280}
+                  className="h-48 w-auto"
+                  priority
+                />
+              </Link>
             </div>
             <p className="text-white/80 leading-relaxed max-w-md font-light">
               Experience luxury accommodation, wildlife tours, and volunteer experiences in Zimbabwe's Southern region. Your gateway to authentic African hospitality.

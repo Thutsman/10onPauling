@@ -26,7 +26,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "10 On Pauling - Bulawayo's #1 Boutique Hotel | Zimbabwe",
+  title: "10 On Pauling Hotel - Bulawayo's #1 Boutique Hotel | Zimbabwe",
   description: "Award-winning luxury accommodation in Bulawayo. Experience Zimbabwe's best with Victoria Falls tours, Hwange safaris, volunteer programs, and premium car rental.",
   keywords: [
     "Zimbabwe hotel",
@@ -37,19 +37,19 @@ export const metadata: Metadata = {
     "volunteer Zimbabwe",
     "car rental Zimbabwe",
   ],
-  authors: [{ name: "10 On Pauling" }],
+  authors: [{ name: "10 On Pauling Hotel" }],
   creator: "10 On Pauling Hotel",
   openGraph: {
-    title: "10 On Pauling - Bulawayo's #1 Boutique Hotel",
+    title: "10 On Pauling Hotel - Bulawayo's #1 Boutique Hotel",
     description: "Experience luxury, adventure, and impact in Zimbabwe",
     url: "https://10onpauling.com",
-    siteName: "10 On Pauling",
+    siteName: "10 On Pauling Hotel",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "10 On Pauling Boutique Hotel",
+        alt: "10 On Pauling Hotel - Boutique Hotel",
       },
     ],
     locale: "en_US",
@@ -57,13 +57,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "10 On Pauling - Bulawayo's #1 Boutique Hotel",
+    title: "10 On Pauling Hotel - Bulawayo's #1 Boutique Hotel",
     description: "Award-winning luxury accommodation in Zimbabwe",
     images: ["/images/twitter-image.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/images/logo/logo.svg", type: "image/svg+xml" },
+      { url: "/images/logo/logo.svg", type: "image/svg+xml", sizes: "any" },
+    ],
+    apple: "/images/logo/logo.svg",
+    shortcut: "/images/logo/logo.svg",
   },
   robots: {
     index: true,

@@ -2,7 +2,7 @@ export function generateHotelStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "Hotel",
-    name: "10 On Pauling",
+    name: "10 On Pauling Hotel",
     description: "Award-winning luxury boutique hotel in Bulawayo, Zimbabwe. Offering premium accommodation, wildlife tours, volunteer experiences, and car rental services.",
     address: {
       "@type": "PostalAddress",
@@ -36,7 +36,7 @@ export function generateLocalBusinessStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "10 On Pauling",
+    name: "10 On Pauling Hotel",
     image: "https://10onpauling.com/images/og-image.jpg",
     "@id": "https://10onpauling.com",
     url: "https://10onpauling.com",

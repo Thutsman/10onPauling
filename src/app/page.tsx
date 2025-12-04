@@ -1,3 +1,7 @@
+"use client";
+
+import * as React from "react";
+import { motion } from "framer-motion";
 import HeroSlideshow from "@/components/home/HeroSlideshow";
 import StatsCards from "@/components/home/StatsCards";
 import DiscoverZimbabwe from "@/components/home/DiscoverZimbabwe";
@@ -27,16 +31,36 @@ export default function Home() {
           <PatternDivider pattern="zigzag" height={32} className="text-foreground" />
         </div>
         <div className="container px-4 mx-auto relative z-10">
-          <div className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary mb-3">
               Curated Experiences
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               More than just a hotel, we offer a complete Zimbabwean journey tailored to your desires.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {[
               {
                 title: "Luxury Accommodation",
@@ -67,26 +91,41 @@ export default function Home() {
                 color: "bg-secondary/10 text-secondary",
               },
             ].map((feature) => (
-              <Link 
-                key={feature.title} 
-                href={feature.href}
-                className="group p-8 rounded-2xl bg-white shadow-2xl border border-border/40 transition-all duration-300 flex flex-col items-center text-center bg-opacity-90"
+              <motion.div
+                key={feature.title}
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.6,
+                      ease: [0.43, 0.13, 0.23, 0.96],
+                    },
+                  },
+                }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
-                <div className={`p-4 rounded-full mb-6 ${feature.color} group-hover:scale-110 transition-transform`}>
-                  <feature.icon className="w-8 h-8" />
-                </div>
-                <h3 className="font-heading text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  {feature.description}
-                </p>
-                <div className="mt-auto text-sm font-semibold text-primary flex items-center">
-                  Learn More <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
+                <Link 
+                  href={feature.href}
+                  className="group p-8 rounded-2xl bg-white shadow-2xl border border-border/40 transition-all duration-300 flex flex-col items-center text-center bg-opacity-90 block h-full"
+                >
+                  <div className={`p-4 rounded-full mb-6 ${feature.color} group-hover:scale-110 transition-transform`}>
+                    <feature.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="font-heading text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6">
+                    {feature.description}
+                  </p>
+                  <div className="mt-auto text-sm font-semibold text-primary flex items-center">
+                    Learn More <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 

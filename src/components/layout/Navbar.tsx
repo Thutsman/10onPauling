@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -80,13 +81,18 @@ export default function Navbar() {
         )}
       >
         <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
-          <Link href="/" className="relative z-50 flex items-center space-x-2 group">
-            <span className={cn(
-              "font-heading text-2xl font-bold tracking-tight transition-colors duration-300",
-              isScrolled ? "text-primary" : "text-white drop-shadow-md"
-            )}>
-              10 ON PAULING
-            </span>
+          <Link href="/" className="relative z-50 flex items-center group">
+            <Image
+              src="/images/logo/logo.svg"
+              alt="10 On Pauling Logo"
+              width={720}
+              height={240}
+              className={cn(
+                "h-40 w-auto transition-opacity duration-300",
+                isScrolled ? "opacity-100" : "opacity-100 drop-shadow-md"
+              )}
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
