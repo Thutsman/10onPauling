@@ -1,65 +1,109 @@
-import Image from "next/image";
+import HeroSlideshow from "@/components/home/HeroSlideshow";
+import StatsCards from "@/components/home/StatsCards";
+import DiscoverZimbabwe from "@/components/home/DiscoverZimbabwe";
+import AboutSection from "@/components/home/AboutSection";
+import BowerySection from "@/components/home/BowerySection";
+import ConciergeSection from "@/components/home/ConciergeSection";
+import FinalCTA from "@/components/home/FinalCTA";
+import Link from "next/link";
+import { ArrowRight, Bed, Car, Globe, HeartHandshake } from "lucide-react";
+import PatternDivider from "@/components/shared/patterns/PatternDivider";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <HeroSlideshow />
+
+      {/* Statistics Cards */}
+      <StatsCards />
+
+      {/* Features Grid */}
+      <section
+        id="zimbabwe-features"
+        className="relative py-24 overflow-hidden bg-gradient-to-b from-white via-sandstone/35 to-white"
+      >
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <PatternDivider pattern="zigzag" height={32} className="text-foreground" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="container px-4 mx-auto relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary mb-3">
+              Curated Experiences
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              More than just a hotel, we offer a complete Zimbabwean journey tailored to your desires.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: "Luxury Accommodation",
+                description: "Elegant suites designed for comfort and style.",
+                icon: Bed,
+                href: "/accommodation",
+                color: "bg-primary/10 text-primary",
+              },
+              {
+                title: "Wildlife Tours",
+                description: "Guided safaris to Hwange and Matobo Hills.",
+                icon: Globe,
+                href: "/tours",
+                color: "bg-safari/10 text-safari",
+              },
+              {
+                title: "Volunteer",
+                description: "Give back to the community with impactful programs.",
+                icon: HeartHandshake,
+                href: "/volunteer-experience",
+                color: "bg-earth/10 text-earth",
+              },
+              {
+                title: "Car Rental",
+                description: "Reliable vehicles for your self-drive adventures.",
+                icon: Car,
+                href: "/car-rental",
+                color: "bg-secondary/10 text-secondary",
+              },
+            ].map((feature) => (
+              <Link 
+                key={feature.title} 
+                href={feature.href}
+                className="group p-8 rounded-2xl bg-white shadow-2xl border border-border/40 transition-all duration-300 flex flex-col items-center text-center bg-opacity-90"
+              >
+                <div className={`p-4 rounded-full mb-6 ${feature.color} group-hover:scale-110 transition-transform`}>
+                  <feature.icon className="w-8 h-8" />
+                </div>
+                <h3 className="font-heading text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  {feature.description}
+                </p>
+                <div className="mt-auto text-sm font-semibold text-primary flex items-center">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Discover Zimbabwe */}
+      <DiscoverZimbabwe />
+
+      {/* About Section */}
+      <AboutSection />
+
+      {/* The Bowery Restaurant */}
+      <BowerySection />
+
+      {/* Concierge Services */}
+      <ConciergeSection />
+
+      {/* Final CTA */}
+      <FinalCTA />
     </div>
   );
 }
