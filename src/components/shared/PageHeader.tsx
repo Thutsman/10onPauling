@@ -8,7 +8,7 @@ interface PageHeaderProps {
 
 export default function PageHeader({ title, description, className }: PageHeaderProps) {
   return (
-    <div className={cn("bg-secondary text-secondary-foreground py-24 px-4 text-center relative overflow-hidden", className)}>
+    <div className={cn("bg-secondary text-secondary-foreground pt-32 pb-24 md:pt-28 px-4 text-center relative overflow-hidden", className)}>
       {/* Abstract Pattern */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">

@@ -76,23 +76,37 @@ export default function Navbar() {
         className={cn(
           "fixed top-0 z-40 w-full transition-all duration-500",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-md py-2"
-            : "bg-transparent py-4"
+            ? "bg-background/95 backdrop-blur-md shadow-md py-2 md:py-1"
+            : "bg-transparent py-3 md:py-2"
         )}
       >
         <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
           <Link href="/" className="relative z-50 flex items-center group">
-            <Image
-              src="/images/logo/logo.svg"
-              alt="10 On Pauling Logo"
-              width={720}
-              height={240}
-              className={cn(
-                "h-40 w-auto transition-opacity duration-300",
-                isScrolled ? "opacity-100" : "opacity-100 drop-shadow-md"
-              )}
-              priority
-            />
+            {/* Mobile: White background container with padding */}
+            <div className="md:hidden bg-white/95 backdrop-blur-sm p-2 rounded-lg shadow-lg">
+              <Image
+                src="/images/logo/logo.svg"
+                alt="10 On Pauling Logo"
+                width={720}
+                height={240}
+                className="h-[86px] w-auto transition-opacity duration-300"
+                priority
+              />
+            </div>
+            {/* Desktop: White background container with padding */}
+            <div className="hidden md:block bg-white/95 backdrop-blur-sm p-[2.56px] md:p-[3.84px] lg:p-[5.12px] rounded-lg shadow-lg transition-all duration-300">
+              <Image
+                src="/images/logo/logo.svg"
+                alt="10 On Pauling Logo"
+                width={720}
+                height={240}
+                className={cn(
+                  "h-20 lg:h-40 w-auto transition-opacity duration-300",
+                  isScrolled ? "opacity-100" : "opacity-100 drop-shadow-md"
+                )}
+                priority
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -101,7 +115,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative group py-2"
+                className="relative group py-1"
               >
                 <span className={cn(
                   "text-sm font-medium transition-colors duration-300",

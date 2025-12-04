@@ -34,18 +34,10 @@ export default function VolunteerPage() {
         <div className="absolute inset-0 bg-black/50" />
         
         <div className="container relative z-10 text-center px-4 text-white">
-          <motion.span 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6 text-sm font-semibold tracking-wider uppercase"
-          >
-            Measurable Impact • Meaningful Experiences
-          </motion.span>
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.2 }}
             className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6 drop-shadow-lg"
           >
             Transform Lives, <br/> Transform Yourself
@@ -53,7 +45,7 @@ export default function VolunteerPage() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.4 }}
             className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-white/90 font-light drop-shadow-md"
           >
             Partner with leading conservation and community organizations in the heart of Zimbabwe.
@@ -61,7 +53,7 @@ export default function VolunteerPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 h-auto rounded-full shadow-lg w-full sm:w-auto" asChild>
