@@ -63,7 +63,11 @@ export default function BookingForm({ initialVehicleType, onSuccess }: BookingFo
       setError("Return date must be on or after pick-up date");
       return false;
     }
-    if (new Date(pickupDate) < new Date().toISOString().split("T")[0]) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const pickupDateObj = new Date(pickupDate);
+    pickupDateObj.setHours(0, 0, 0, 0);
+    if (pickupDateObj < today) {
       setError("Pick-up date cannot be in the past");
       return false;
     }
