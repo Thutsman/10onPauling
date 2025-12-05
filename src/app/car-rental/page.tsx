@@ -6,8 +6,35 @@ import PageHeader from "@/components/shared/PageHeader";
 import VehicleCard from "@/components/car-rental/VehicleCard";
 import BookingForm from "@/components/car-rental/BookingForm";
 import FadeIn from "@/components/animations/FadeIn";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+
+// Map vehicle names to vehicle type values used in the booking form
+const getVehicleType = (vehicleName: string): string => {
+  const mapping: Record<string, string> = {
+    "Toyota Land Cruiser": "Executive SUV (Land Cruiser)",
+    "Toyota Fortuner": "Standard SUV (Fortuner)",
+    "Toyota Corolla Cross": "Urban Sedan",
+  };
+  return mapping[vehicleName] || "Executive SUV (Land Cruiser)";
+};
 
 export default function CarRentalPage() {
+  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const [selectedVehicleType, setSelectedVehicleType] = React.useState<string | undefined>(undefined);
+
+  const handleCheckAvailability = React.useCallback((vehicleName: string) => {
+    const vehicleType = getVehicleType(vehicleName);
+    setSelectedVehicleType(vehicleType);
+    setIsDialogOpen(true);
+  }, []);
+
+  const handleDialogClose = React.useCallback(() => {
+    setIsDialogOpen(false);
+    // Reset vehicle type after a delay to allow dialog to close
+    setTimeout(() => {
+      setSelectedVehicleType(undefined);
+    }, 300);
+  }, []);
   return (
     <div className="bg-background min-h-screen">
       <PageHeader
@@ -39,6 +66,7 @@ export default function CarRentalPage() {
                    specs={{ seats: 7, transmission: "Auto", fuel: "Diesel" }}
                    features={["4WD Capability", "Leather Interior", "Climate Control", "Safari Ready"]}
                    idealFor="Safari trips, family travel, Victoria Falls transfers"
+                   onCheckAvailability={handleCheckAvailability}
                  />
                  <VehicleCard
                    name="Toyota Fortuner"
@@ -48,6 +76,7 @@ export default function CarRentalPage() {
                    specs={{ seats: 7, transmission: "Auto", fuel: "Diesel" }}
                    features={["4WD Capability", "Modern Tech", "High Clearance", "Spacious Boot"]}
                    idealFor="Road trips, comfortable touring, mixed terrain"
+                   onCheckAvailability={handleCheckAvailability}
                  />
                </div>
             </section>
@@ -69,6 +98,7 @@ export default function CarRentalPage() {
                    specs={{ seats: 5, transmission: "Auto", fuel: "Petrol" }}
                    features={["Fuel Efficient", "Easy Parking", "CarPlay/Android Auto", "Comfortable"]}
                    idealFor="Bulawayo city driving, short day trips"
+                   onCheckAvailability={handleCheckAvailability}
                  />
                </div>
             </section>
@@ -140,6 +170,22 @@ export default function CarRentalPage() {
           </div>
         </div>
       </div>
+
+      {/* Booking Form Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={handleDialogClose}>
+        <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-heading">Car Rental Booking</DialogTitle>
+            <DialogDescription>
+              Check availability and book your vehicle. We'll confirm your booking within 24 hours.
+            </DialogDescription>
+          </DialogHeader>
+          <BookingForm 
+            initialVehicleType={selectedVehicleType}
+            onSuccess={handleDialogClose}
+          />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

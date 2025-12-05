@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Calendar, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { validateEmail, validatePhone, validateRequired } from "@/lib/validation";
 import { motion, AnimatePresence } from "framer-motion";
+import { supabase } from "@/lib/supabase";
 
 interface BookingFormProps {
   onSuccess?: () => void;
@@ -31,6 +32,7 @@ export default function BookingForm({ onSuccess, className }: BookingFormProps) 
   const [errors, setErrors] = React.useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [showSuccess, setShowSuccess] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState<string>("");
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -49,6 +51,15 @@ export default function BookingForm({ onSuccess, className }: BookingFormProps) 
     if (!validateRequired(formData.checkOut)) newErrors.checkOut = "Check-out date is required";
     if (!validateRequired(formData.roomType)) newErrors.roomType = "Please select a room type";
 
+    // Validate that check-out is after check-in
+    if (formData.checkIn && formData.checkOut) {
+      const checkInDate = new Date(formData.checkIn);
+      const checkOutDate = new Date(formData.checkOut);
+      if (checkOutDate <= checkInDate) {
+        newErrors.checkOut = "Check-out date must be after check-in date";
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -61,13 +72,53 @@ export default function BookingForm({ onSuccess, className }: BookingFormProps) 
     }
 
     setIsSubmitting(true);
+    setSubmitError("");
 
-    // Simulate API call - Replace with actual API endpoint
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Map form data to database schema
+      const bookingData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        country_code: formData.countryCode,
+        check_in: formData.checkIn,
+        check_out: formData.checkOut,
+        room_type: formData.roomType,
+        guests: parseInt(formData.guests, 10),
+        special_requests: formData.specialRequests || null,
+      };
 
-    setIsSubmitting(false);
-    setShowSuccess(true);
-    onSuccess?.();
+      const { error } = await supabase
+        .from('stay_bookings')
+        .insert([bookingData]);
+
+      if (error) {
+        throw error;
+      }
+
+      setIsSubmitting(false);
+      setShowSuccess(true);
+      
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        countryCode: "+263",
+        checkIn: "",
+        checkOut: "",
+        roomType: "",
+        guests: "1",
+        specialRequests: "",
+      });
+      
+      // Call onSuccess callback after a short delay to allow user to see the success message
+      // The parent dialog will close when user manually closes the success dialog
+    } catch (error: any) {
+      console.error('Error submitting booking:', error);
+      setSubmitError(error.message || "Failed to submit booking. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -119,16 +170,35 @@ export default function BookingForm({ onSuccess, className }: BookingFormProps) 
             <label htmlFor="phone" className="block text-sm font-medium mb-2">
               Phone Number <span className="text-destructive">*</span>
             </label>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <Select value={formData.countryCode} onValueChange={(value) => handleChange("countryCode", value)}>
-                <SelectTrigger className="w-24">
+                <SelectTrigger className="w-full sm:w-32 md:w-40">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="+263">+263 (ZW)</SelectItem>
-                  <SelectItem value="+1">+1 (US)</SelectItem>
+                  <SelectItem value="+1">+1 (US/CA)</SelectItem>
                   <SelectItem value="+44">+44 (UK)</SelectItem>
+                  <SelectItem value="+49">+49 (DE)</SelectItem>
+                  <SelectItem value="+31">+31 (NL)</SelectItem>
+                  <SelectItem value="+351">+351 (PT)</SelectItem>
+                  <SelectItem value="+33">+33 (FR)</SelectItem>
+                  <SelectItem value="+34">+34 (ES)</SelectItem>
+                  <SelectItem value="+39">+39 (IT)</SelectItem>
                   <SelectItem value="+27">+27 (ZA)</SelectItem>
+                  <SelectItem value="+61">+61 (AU)</SelectItem>
+                  <SelectItem value="+64">+64 (NZ)</SelectItem>
+                  <SelectItem value="+65">+65 (SG)</SelectItem>
+                  <SelectItem value="+60">+60 (MY)</SelectItem>
+                  <SelectItem value="+62">+62 (ID)</SelectItem>
+                  <SelectItem value="+66">+66 (TH)</SelectItem>
+                  <SelectItem value="+63">+63 (PH)</SelectItem>
+                  <SelectItem value="+81">+81 (JP)</SelectItem>
+                  <SelectItem value="+82">+82 (KR)</SelectItem>
+                  <SelectItem value="+86">+86 (CN)</SelectItem>
+                  <SelectItem value="+852">+852 (HK)</SelectItem>
+                  <SelectItem value="+971">+971 (AE)</SelectItem>
+                  <SelectItem value="+91">+91 (IN)</SelectItem>
                 </SelectContent>
               </Select>
               <Input
@@ -254,6 +324,15 @@ export default function BookingForm({ onSuccess, className }: BookingFormProps) 
             />
           </div>
 
+          {submitError && (
+            <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-md">
+              <p className="text-sm text-destructive flex items-center gap-2">
+                <AlertCircle className="w-4 h-4" />
+                {submitError}
+              </p>
+            </div>
+          )}
+
           <Button
             type="submit"
             size="lg"
@@ -272,7 +351,13 @@ export default function BookingForm({ onSuccess, className }: BookingFormProps) 
         </div>
       </form>
 
-      <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
+      <Dialog open={showSuccess} onOpenChange={(open) => {
+        setShowSuccess(open);
+        // When user closes the success dialog, also close the parent dialog and call onSuccess
+        if (!open) {
+          onSuccess?.();
+        }
+      }}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <motion.div

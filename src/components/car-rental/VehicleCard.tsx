@@ -20,6 +20,7 @@ interface VehicleCardProps {
   };
   features: string[];
   idealFor: string;
+  onCheckAvailability?: (vehicleName: string) => void;
 }
 
 export default function VehicleCard({
@@ -30,6 +31,7 @@ export default function VehicleCard({
   specs,
   features,
   idealFor,
+  onCheckAvailability,
 }: VehicleCardProps) {
   return (
     <motion.div
@@ -100,7 +102,10 @@ export default function VehicleCard({
         </div>
 
         <div className="mt-auto space-y-3">
-          <Button className="w-full bg-primary text-white hover:bg-primary/90">
+          <Button 
+            className="w-full bg-primary text-white hover:bg-primary/90"
+            onClick={() => onCheckAvailability?.(name)}
+          >
             Check Availability
           </Button>
           <div className="flex items-center justify-center gap-2">
