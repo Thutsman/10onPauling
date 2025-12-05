@@ -53,18 +53,6 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { y: 60, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      ease: [0.43, 0.13, 0.23, 0.96] as const,
-    },
-  },
-};
-
 export default function DiscoverZimbabwe() {
   return (
     <section className="py-24 bg-sandstone/20 relative overflow-hidden">
@@ -104,7 +92,20 @@ export default function DiscoverZimbabwe() {
           {destinations.map((destination) => (
             <motion.div
               key={destination.id}
-              variants={cardVariants}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  x: destination.id % 2 === 0 ? -60 : 60,
+                },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: {
+                    duration: 0.7,
+                    ease: [0.43, 0.13, 0.23, 0.96] as const,
+                  },
+                },
+              }}
               className="group relative h-[500px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500"
             >
               {/* Parallax Image Container */}

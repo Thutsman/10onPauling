@@ -90,16 +90,18 @@ export default function Home() {
                 href: "/car-rental",
                 color: "bg-secondary/10 text-secondary",
               },
-            ].map((feature) => (
+            ].map((feature, idx) => {
+              const fromLeft = idx % 2 === 0;
+              return (
               <motion.div
                 key={feature.title}
                 variants={{
-                  hidden: { opacity: 0, y: 40 },
+                  hidden: { opacity: 0, x: fromLeft ? -40 : 40 },
                   visible: {
                     opacity: 1,
-                    y: 0,
+                    x: 0,
                     transition: {
-                      duration: 0.6,
+                      duration: 0.65,
                       ease: [0.43, 0.13, 0.23, 0.96],
                     },
                   },
@@ -124,7 +126,8 @@ export default function Home() {
                   </div>
                 </Link>
               </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
         </div>
       </section>
