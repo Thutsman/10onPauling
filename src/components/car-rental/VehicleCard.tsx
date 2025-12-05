@@ -56,7 +56,7 @@ export default function VehicleCard({
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-heading text-2xl font-bold text-secondary">{name}</h3>
           <div className="text-right">
-            <span className="block text-lg font-bold text-primary">{price}</span>
+            <span className="block text-lg font-bold text-primary">from {price}</span>
             <span className="text-xs text-muted-foreground">per day</span>
           </div>
         </div>

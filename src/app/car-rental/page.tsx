@@ -127,8 +127,8 @@ export default function CarRentalPage() {
                  </div>
 
                  <div className="bg-muted p-6 rounded-xl">
-                   <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-muted-foreground">Rental Requirements</h4>
-                   <ul className="list-disc list-inside text-sm space-y-2 text-secondary-foreground/80">
+                   <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-foreground">Rental Requirements</h4>
+                   <ul className="list-disc list-inside text-sm space-y-2 text-foreground">
                      <li>Valid Driver's License (English)</li>
                      <li>Minimum age: 23 years</li>
                      <li>Credit Card for security deposit</li>

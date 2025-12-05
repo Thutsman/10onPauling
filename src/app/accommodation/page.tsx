@@ -50,14 +50,14 @@ export default function AccommodationPage() {
           <SuiteCard
             title="Presidential Suite"
             description="The pinnacle of elegance and space. Designed for those who demand the very best, offering unparalleled privacy and luxury."
-            price="From $350/night"
+            price="From $250/night"
             badge="Most Popular"
             badgeColor="bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md"
             images={[
-              "/images/accommodation/presidential/presidential-suite-1.jpeg",
+              "/images/accommodation/presidential/presidential-suite-4.jpeg",
               "/images/accommodation/presidential/presidential-suite-2.jpeg",
               "/images/accommodation/presidential/presidential-suite-3.jpeg",
-              "/images/accommodation/presidential/presidential-suite-4.jpeg",
+              "/images/accommodation/presidential/presidential-suite-1.jpeg",
             ]}
             amenities={[
               { icon: Star, text: "Dedicated Butler" },
@@ -79,7 +79,7 @@ export default function AccommodationPage() {
           <SuiteCard
             title="Executive Suite"
             description="Perfectly balanced for business or leisure. A sophisticated sanctuary featuring modern amenities and a dedicated workspace."
-            price="From $250/night"
+            price="From $200/night"
             badge="Business Choice"
             badgeColor="bg-secondary text-secondary-foreground"
             isReversed
