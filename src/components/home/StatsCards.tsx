@@ -2,13 +2,13 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Trophy, ShieldCheck, Sparkles } from "lucide-react";
+import { Crown, ShieldCheck, Stars } from "lucide-react";
 import { cn } from "@/lib/utils";
 import PatternDivider from "@/components/shared/patterns/PatternDivider";
 
 const stats = [
   {
-    icon: Trophy,
+    icon: Crown,
     badge: "#1 Global Destination",
     subhead: "Forbes Travel Guide 2025",
     description: "Voted the leading global destination for sustainable luxury travel.",
@@ -17,14 +17,14 @@ const stats = [
   },
   {
     icon: ShieldCheck,
-    badge: "Luxury Safeguard",
+    badge: "Serene Luxury",
     subhead: "Boutique Hotel in Bulawayo",
     description: "Awarded for impeccable service, safety, and bespoke guest journeys.",
     gradient: "from-primary/90 via-primary/50 to-amber-100",
     outline: "border-primary/70",
   },
   {
-    icon: Sparkles,
+    icon: Stars,
     badge: "Unforgettable Experiences",
     subhead: "Guests rate us 4.9/5",
     description: "From conservation safaris to curated dining, the ratings reflect true impact.",
@@ -81,9 +81,10 @@ export default function StatsCards() {
               )}
             >
               <div className="absolute inset-0 rounded-3xl opacity-0 hover:opacity-60 transition-opacity pointer-events-none bg-gradient-to-br from-black/10 via-black/5 to-transparent" />
-              <div className="relative flex justify-center mb-4">
-                <div className="p-5 bg-white rounded-full shadow-lg">
-                  <stat.icon className="w-9 h-9 text-foreground" />
+              <div className="relative flex justify-center mb-5">
+                <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/90 shadow-[0_15px_30px_-12px_rgba(0,0,0,0.35)] ring-4 ring-white/40 ring-offset-2 ring-offset-white/30 backdrop-blur-sm">
+                  <div className="absolute inset-[-6px] rounded-2xl bg-gradient-to-br from-white/50 via-white/10 to-transparent blur-sm" />
+                  <stat.icon className="w-9 h-9 text-secondary drop-shadow-sm" />
                 </div>
               </div>
               <h3 className="font-heading text-2xl md:text-3xl font-bold text-secondary mb-1 relative">

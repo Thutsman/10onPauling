@@ -13,7 +13,7 @@ export default function FinalCTA() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/cta/final-cta-bg.jpg"
+          src="/images/cta/final-cta-bg.jpeg"
           alt="10 On Pauling Hotel - Luxury boutique hotel exterior with pool area at golden hour"
           fill
           className="object-cover"

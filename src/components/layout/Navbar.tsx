@@ -89,26 +89,26 @@ export default function Navbar() {
           )}
         >
           <Link href="/" className="relative z-50 flex items-center group shrink-0">
-            {/* Mobile: White background container with padding */}
-            <div className="md:hidden bg-white/95 backdrop-blur-sm p-2 rounded-lg shadow-lg">
+            {/* Mobile logo (no padded container) */}
+            <div className="md:hidden">
               <Image
                 src="/images/logo/logo.svg"
                 alt="10 On Pauling Logo"
                 width={720}
                 height={240}
-                className="h-[86px] w-auto transition-opacity duration-300"
+                className="h-20 w-auto transition-opacity duration-300"
                 priority
               />
             </div>
-            {/* Desktop: White background container with padding */}
-            <div className="hidden md:block bg-white/95 backdrop-blur-sm p-[2.56px] md:p-[3.84px] lg:p-[5.12px] rounded-lg shadow-lg transition-all duration-300">
+            {/* Desktop logo (no padded container) */}
+            <div className="hidden md:block transition-all duration-300">
               <Image
                 src="/images/logo/logo.svg"
                 alt="10 On Pauling Logo"
                 width={720}
                 height={240}
                 className={cn(
-                  "h-20 lg:h-40 w-auto transition-opacity duration-300",
+                  "h-24 lg:h-36 w-auto transition-opacity duration-300",
                   isScrolled ? "opacity-100" : "opacity-100 drop-shadow-md"
                 )}
                 priority

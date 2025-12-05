@@ -41,7 +41,7 @@ export default function ProgramCard({
   return (
     <div className={cn("rounded-2xl overflow-hidden bg-card border-2 transition-all duration-300 hover:shadow-xl flex flex-col h-full", color)}>
       {/* Image Header */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-64 md:h-72 overflow-hidden">
         <Image
           src={image}
           alt={title}
@@ -49,17 +49,17 @@ export default function ProgramCard({
           className="object-cover transition-transform duration-500 hover:scale-105"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary shadow-sm">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+        <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold text-primary shadow-sm">
           {price}
         </div>
-        <div className="absolute -bottom-6 left-6 p-3 rounded-full bg-background shadow-md border border-border z-10">
-          <Icon className={cn("w-8 h-8", accentColor)} />
+        <div className="absolute -bottom-8 left-6 p-4 rounded-full bg-background shadow-lg border border-border z-10">
+          <Icon className={cn("w-9 h-9", accentColor)} />
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-6 pt-10 flex flex-col flex-grow">
+      <div className="p-6 pt-12 flex flex-col flex-grow">
         <h3 className="font-heading text-2xl font-bold text-secondary mb-3">{title}</h3>
         <p className="text-muted-foreground mb-6 text-sm leading-relaxed">{description}</p>
 

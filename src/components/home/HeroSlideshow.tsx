@@ -17,7 +17,7 @@ const SLIDES = [
     subheading: "Voted by ZimCEO Network 2025",
     ctaText: "View Our Suites",
     ctaLink: "/accommodation",
-    image: "/images/hero/hero-2.jpeg",
+    image: "/images/hero/hero-2.jpg",
     overlayColor: "from-primary/40 via-transparent to-transparent", // Terracotta hint
     alt: "Elegant hotel interior",
   },

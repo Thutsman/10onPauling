@@ -2,51 +2,40 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Jenkins",
-    country: "United Kingdom",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop",
-    quote: "My time volunteering with the ILife Stream was truly transformative. Connecting with the local children and seeing their eagerness to learn changed my perspective on life completely.",
+    name: "Thalia",
+    country: "USA",
+    image: "/images/volunteer/testimonials/sarah-jenkins.jpeg",
+    quote: "Volunteering in Zimbabwe was life-changing. From witnessing the Big Five in Hwange to experiencing the majesty of Victoria Falls, every moment was unforgettable. Murarabungu made Africa feel like home.",
     rating: 5,
-    program: "ILife Stream"
+    program: ""
   },
   {
     id: 2,
-    name: "David Chen",
-    country: "Canada",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop",
-    quote: "As a photographer, capturing the raw beauty of Zimbabwe's wildlife was a dream come true. The mentorship I received helped me build a professional portfolio I'm proud of.",
+    name: "Grant",
+    country: "USA",
+    image: "/images/volunteer/testimonials/david-chen.jpeg",
+    quote: "10 on Pauling was pure serenity. My stay became unforgettable when I was able to film wild rhino up close — a humbling, once-in-a-lifetime experience. Absolutely exceptional hospitality.",
     rating: 5,
     program: "Photography Stream"
   },
   {
     id: 3,
-    name: "Elena Rodriguez",
-    country: "Spain",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop",
-    quote: "The conservation work is hands-on and impactful. Tracking rhinos on foot and contributing to anti-poaching data was an adrenaline rush with a purpose.",
+    name: "Autralian team",
+    country: "Australia",
+    image: "/images/volunteer/testimonials/elena-rodriguez.jpeg",
+    quote: "Working with the ILife Stream was deeply rewarding. Supporting local families, helping with youth programs, and seeing communities thrive made every day meaningful. It was purpose-driven travel at its best.",
     rating: 5,
-    program: "Conservation Stream"
+    program: "ILife Stream"
   }
 ];
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
   return (
     <section className="py-24 bg-secondary text-secondary-foreground relative overflow-hidden">
       {/* Background Pattern */}
@@ -69,68 +58,51 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto relative">
-          <AnimatePresence mode="wait">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
             <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12"
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.05 * index }}
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 relative overflow-hidden"
             >
-              <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
-                <div className="shrink-0 relative">
-                   <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
-                     <Image 
-                       src={testimonials[currentIndex].image} 
-                       alt={testimonials[currentIndex].name} 
-                       fill 
-                       className="object-cover"
-                     />
-                   </div>
-                   <div className="absolute -bottom-3 -right-3 bg-accent text-secondary p-2 rounded-full shadow-lg">
-                     <Quote className="w-5 h-5" />
-                   </div>
+              <div className="absolute top-4 right-4 bg-accent text-secondary p-2 rounded-full shadow-lg">
+                <Quote className="w-4 h-4" />
+              </div>
+
+              <div className="flex flex-col items-center text-center gap-6">
+                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl border-4 border-white/10 shadow-xl">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
-                
-                <div className="text-center md:text-left flex-grow">
-                  <div className="flex justify-center md:justify-start gap-1 mb-4 text-accent">
-                    {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-lg md:text-xl font-light italic text-white/90 mb-6 leading-relaxed">
-                    "{testimonials[currentIndex].quote}"
+
+                <div className="flex justify-center gap-1 text-accent">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+
+                <p className="text-base md:text-lg font-light italic text-white/90 leading-relaxed">
+                  "{testimonial.quote}"
+                </p>
+
+                <div>
+                  <h4 className="font-bold text-lg text-white">{testimonial.name}</h4>
+                  <p className="text-sm text-white/60 uppercase tracking-wider">
+                    {testimonial.country}
+                    {testimonial.program ? ` • ${testimonial.program}` : ""}
                   </p>
-                  <div>
-                    <h4 className="font-bold text-lg text-white">{testimonials[currentIndex].name}</h4>
-                    <p className="text-sm text-white/60 uppercase tracking-wider">{testimonials[currentIndex].country} • {testimonials[currentIndex].program}</p>
-                  </div>
                 </div>
               </div>
             </motion.div>
-          </AnimatePresence>
-
-          {/* Navigation */}
-          <div className="flex justify-center gap-4 mt-8">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              className="rounded-full border-white/20 text-white hover:bg-white hover:text-secondary bg-transparent"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              className="rounded-full border-white/20 text-white hover:bg-white hover:text-secondary bg-transparent"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
-          </div>
+          ))}
         </div>
       </div>
     </section>
