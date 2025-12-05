@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Space_Grotesk } from "next/font/google";
+import { Monda } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/components/layout/Navbar";
@@ -8,15 +8,17 @@ import BookingButton from "@/components/layout/BookingButton";
 import SkipToContent from "@/components/shared/SkipToContent";
 import { generateHotelStructuredData, generateLocalBusinessStructuredData } from "@/lib/structured-data";
 
-const headingFont = Cormorant_Garamond({
+const monda = Monda({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["400", "700"],
 });
 
-const bodyFont = Space_Grotesk({
+// Use the same Monda font for body text to keep the site consistent.
+const bodyFont = Monda({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const viewport: Viewport = {
@@ -103,7 +105,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${bodyFont.variable} ${headingFont.variable} antialiased font-sans bg-background text-foreground flex flex-col min-h-screen`}
+        className={`${bodyFont.variable} ${monda.variable} antialiased font-sans bg-background text-foreground flex flex-col min-h-screen`}
       >
         <SkipToContent />
         <Navbar />

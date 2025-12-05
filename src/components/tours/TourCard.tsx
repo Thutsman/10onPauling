@@ -44,7 +44,13 @@ export default function TourCard({
   };
 
   return (
-    <div className="bg-card border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="bg-card border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Image Column */}
         <div className="relative h-64 lg:h-auto min-h-[400px]">
@@ -149,7 +155,7 @@ export default function TourCard({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

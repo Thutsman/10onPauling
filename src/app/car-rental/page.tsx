@@ -5,6 +5,7 @@ import { ShieldCheck, Wrench, MapPin, UserCheck } from "lucide-react";
 import PageHeader from "@/components/shared/PageHeader";
 import VehicleCard from "@/components/car-rental/VehicleCard";
 import BookingForm from "@/components/car-rental/BookingForm";
+import FadeIn from "@/components/animations/FadeIn";
 
 export default function CarRentalPage() {
   return (
@@ -23,10 +24,12 @@ export default function CarRentalPage() {
             
             {/* Executive SUVs */}
             <section>
-               <h2 className="font-heading text-2xl font-bold text-secondary mb-6 flex items-center gap-2">
-                 Executive SUVs
+               <FadeIn fullWidth className="flex items-center gap-2 mb-6">
+                 <h2 className="font-heading text-2xl font-bold text-secondary">
+                   Executive SUVs
+                 </h2>
                  <span className="text-sm font-normal text-muted-foreground bg-muted px-2 py-1 rounded-md">Premium Comfort</span>
-               </h2>
+               </FadeIn>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                  <VehicleCard
                    name="Toyota Land Cruiser"
@@ -51,10 +54,12 @@ export default function CarRentalPage() {
 
             {/* Urban */}
             <section>
-               <h2 className="font-heading text-2xl font-bold text-secondary mb-6 flex items-center gap-2">
-                 Urban Touring
+               <FadeIn fullWidth className="flex items-center gap-2 mb-6">
+                 <h2 className="font-heading text-2xl font-bold text-secondary">
+                   Urban Touring
+                 </h2>
                  <span className="text-sm font-normal text-muted-foreground bg-muted px-2 py-1 rounded-md">City Comfort</span>
-               </h2>
+               </FadeIn>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                  <VehicleCard
                    name="Toyota Corolla Cross"
@@ -74,7 +79,7 @@ export default function CarRentalPage() {
           <div className="lg:col-span-1 space-y-8">
             
             {/* Booking Form Sticky */}
-            <div className="sticky top-24">
+            <FadeIn fullWidth className="sticky top-24">
                <BookingForm />
 
                {/* Info Cards */}
@@ -131,7 +136,7 @@ export default function CarRentalPage() {
                    </ul>
                  </div>
                </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </div>

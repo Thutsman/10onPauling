@@ -25,6 +25,7 @@ import {
 import { Button } from "@/components/ui/button";
 import PageHeader from "@/components/shared/PageHeader";
 import SuiteCard from "@/components/accommodation/SuiteCard";
+import FadeIn from "@/components/animations/FadeIn";
 
 export default function AccommodationPage() {
   return (
@@ -45,84 +46,90 @@ export default function AccommodationPage() {
 
       {/* Suites Section */}
       <section className="container mx-auto px-4 py-16 space-y-8">
-        <SuiteCard
-          title="Presidential Suite"
-          description="The pinnacle of elegance and space. Designed for those who demand the very best, offering unparalleled privacy and luxury."
-          price="From $350/night"
-          badge="Most Popular"
-          badgeColor="bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md"
-          images={[
-            "/images/accommodation/presidential/presidential-suite-1.jpeg",
-            "/images/accommodation/presidential/presidential-suite-2.jpeg",
-            "/images/accommodation/presidential/presidential-suite-3.jpeg",
-            "/images/accommodation/presidential/presidential-suite-4.jpeg",
-          ]}
-          amenities={[
-            { icon: Star, text: "Dedicated Butler" },
-            { icon: Bath, text: "Marble Bathroom" },
-            { icon: Wind, text: "Private Lounge" },
-            { icon: Wifi, text: "High-Speed Wi-Fi" },
-          ]}
-          features={[
-            "Spacious king bedroom with premium linens",
-            "Separate living and dining area",
-            "Private terrace with panoramic views",
-            "Complimentary mini-bar and Nespresso machine",
-            "Ideal for: VIPs, Executives, Honeymooners"
-          ]}
-        />
+        <FadeIn fullWidth>
+          <SuiteCard
+            title="Presidential Suite"
+            description="The pinnacle of elegance and space. Designed for those who demand the very best, offering unparalleled privacy and luxury."
+            price="From $350/night"
+            badge="Most Popular"
+            badgeColor="bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-md"
+            images={[
+              "/images/accommodation/presidential/presidential-suite-1.jpeg",
+              "/images/accommodation/presidential/presidential-suite-2.jpeg",
+              "/images/accommodation/presidential/presidential-suite-3.jpeg",
+              "/images/accommodation/presidential/presidential-suite-4.jpeg",
+            ]}
+            amenities={[
+              { icon: Star, text: "Dedicated Butler" },
+              { icon: Bath, text: "Marble Bathroom" },
+              { icon: Wind, text: "Private Lounge" },
+              { icon: Wifi, text: "High-Speed Wi-Fi" },
+            ]}
+            features={[
+              "Spacious king bedroom with premium linens",
+              "Separate living and dining area",
+              "Private terrace with panoramic views",
+              "Complimentary mini-bar and Nespresso machine",
+              "Ideal for: VIPs, Executives, Honeymooners"
+            ]}
+          />
+        </FadeIn>
 
-        <SuiteCard
-          title="Executive Suite"
-          description="Perfectly balanced for business or leisure. A sophisticated sanctuary featuring modern amenities and a dedicated workspace."
-          price="From $250/night"
-          badge="Business Choice"
-          badgeColor="bg-secondary text-secondary-foreground"
-          isReversed
-          images={[
-            "/images/accommodation/executive/executive-suite-1.jpeg",
-            "/images/accommodation/executive/executive-suite-2.jpeg",
-            "/images/accommodation/executive/executive-suite-3.jpeg",
-          ]}
-          amenities={[
-            { icon: Briefcase, text: "Work Station" },
-            { icon: Coffee, text: "Coffee Station" },
-            { icon: Bath, text: "Walk-in Shower" },
-            { icon: Trees, text: "Garden Views" },
-          ]}
-          features={[
-            "Premium king-size bed",
-            "Ergonomic workspace with connectivity hub",
-            "Smart TV with international channels",
-            "Soundproof windows for deep rest",
-            "Access to executive lounge"
-          ]}
-        />
+        <FadeIn delay={0.05} fullWidth>
+          <SuiteCard
+            title="Executive Suite"
+            description="Perfectly balanced for business or leisure. A sophisticated sanctuary featuring modern amenities and a dedicated workspace."
+            price="From $250/night"
+            badge="Business Choice"
+            badgeColor="bg-secondary text-secondary-foreground"
+            isReversed
+            images={[
+              "/images/accommodation/executive/executive-suite-1.jpeg",
+              "/images/accommodation/executive/executive-suite-2.jpeg",
+              "/images/accommodation/executive/executive-suite-3.jpeg",
+            ]}
+            amenities={[
+              { icon: Briefcase, text: "Work Station" },
+              { icon: Coffee, text: "Coffee Station" },
+              { icon: Bath, text: "Walk-in Shower" },
+              { icon: Trees, text: "Garden Views" },
+            ]}
+            features={[
+              "Premium king-size bed",
+              "Ergonomic workspace with connectivity hub",
+              "Smart TV with international channels",
+              "Soundproof windows for deep rest",
+              "Access to executive lounge"
+            ]}
+          />
+        </FadeIn>
 
-        <SuiteCard
-          title="Deluxe Suite"
-          description="Stylish and peaceful. An inviting space designed for comfort, making it the perfect base for your Bulawayo adventures."
-          price="From $185/night"
-          badge="Great Value"
-          badgeColor="bg-primary/10 text-primary border border-primary/20"
-          images={[
-            "/images/accommodation/deluxe/deluxe-suite-1.jpeg",
-            "/images/accommodation/deluxe/deluxe-suite-2.jpeg",
-          ]}
-          amenities={[
-            { icon: User, text: "Queen Bedding" },
-            { icon: Tv, text: "Smart TV" },
-            { icon: Wind, text: "Air Conditioning" },
-            { icon: Sparkles, text: "Daily Housekeeping" },
-          ]}
-          features={[
-            "Comfortable queen-size bed",
-            "En-suite bathroom with luxury toiletries",
-            "Cozy seating area",
-            "Complimentary tea and coffee",
-            "Perfect for: Solo travelers, Couples"
-          ]}
-        />
+        <FadeIn delay={0.1} fullWidth>
+          <SuiteCard
+            title="Deluxe Suite"
+            description="Stylish and peaceful. An inviting space designed for comfort, making it the perfect base for your Bulawayo adventures."
+            price="From $185/night"
+            badge="Great Value"
+            badgeColor="bg-primary/10 text-primary border border-primary/20"
+            images={[
+              "/images/accommodation/deluxe/deluxe-suite-1.jpeg",
+              "/images/accommodation/deluxe/deluxe-suite-2.jpeg",
+            ]}
+            amenities={[
+              { icon: User, text: "Queen Bedding" },
+              { icon: Tv, text: "Smart TV" },
+              { icon: Wind, text: "Air Conditioning" },
+              { icon: Sparkles, text: "Daily Housekeeping" },
+            ]}
+            features={[
+              "Comfortable queen-size bed",
+              "En-suite bathroom with luxury toiletries",
+              "Cozy seating area",
+              "Complimentary tea and coffee",
+              "Perfect for: Solo travelers, Couples"
+            ]}
+          />
+        </FadeIn>
       </section>
 
       {/* General Amenities Section */}
@@ -138,14 +145,14 @@ export default function AccommodationPage() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
+          <FadeIn fullWidth className="text-center mb-16">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 text-primary-foreground">
               Hotel Amenities
             </h2>
             <p className="text-secondary-foreground/80 max-w-2xl mx-auto">
               Every stay at 10 On Pauling includes access to our premium facilities and services.
             </p>
-          </div>
+          </FadeIn>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -176,7 +183,7 @@ export default function AccommodationPage() {
 
       {/* Booking Information */}
       <section className="py-20 container mx-auto px-4">
-        <div className="bg-muted/30 rounded-2xl p-8 md:p-12 border border-border">
+        <FadeIn fullWidth className="bg-muted/30 rounded-2xl p-8 md:p-12 border border-border">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <h3 className="font-heading text-2xl font-bold text-secondary mb-6">
@@ -226,7 +233,7 @@ export default function AccommodationPage() {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
     </div>
   );

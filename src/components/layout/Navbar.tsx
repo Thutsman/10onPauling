@@ -74,14 +74,21 @@ export default function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-0 z-40 w-full transition-all duration-500",
+          "fixed inset-x-0 top-0 z-40 w-full transition-all duration-500",
+          "pt-[max(0.75rem,env(safe-area-inset-top))]",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-md py-2 md:py-1"
-            : "bg-transparent py-3 md:py-2"
+            ? "bg-background/95 backdrop-blur-md shadow-md pb-2 md:pb-1"
+            : "bg-transparent pb-3 md:pb-2"
         )}
       >
-        <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
-          <Link href="/" className="relative z-50 flex items-center group">
+        <div
+          className={cn(
+            "container mx-auto flex items-center justify-between gap-3 px-4 md:px-8",
+            "pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]",
+            "min-h-[64px]"
+          )}
+        >
+          <Link href="/" className="relative z-50 flex items-center group shrink-0">
             {/* Mobile: White background container with padding */}
             <div className="md:hidden bg-white/95 backdrop-blur-sm p-2 rounded-lg shadow-lg">
               <Image
@@ -138,7 +145,7 @@ export default function Navbar() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden relative z-50">
+          <div className="md:hidden relative z-50 shrink-0">
             <Button
               variant="ghost"
               size="icon"

@@ -73,9 +73,22 @@ export default function ImpactMetrics() {
   return (
     <section className="py-16 bg-background border-b border-border/40">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {metrics.map((metric) => (
-            <div key={metric.id} className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-30px" }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+        >
+          {metrics.map((metric, idx) => (
+            <motion.div
+              key={metric.id}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: idx * 0.05 }}
+              className="text-center"
+            >
               <div className="flex justify-center mb-4">
                 <div className="p-3 bg-muted rounded-full">
                   <metric.icon className={`w-6 h-6 ${metric.color}`} />
@@ -87,9 +100,9 @@ export default function ImpactMetrics() {
               <p className="text-sm text-muted-foreground font-medium uppercase tracking-wide">
                 {metric.label}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

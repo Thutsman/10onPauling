@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface PageHeaderProps {
@@ -22,13 +25,25 @@ export default function PageHeader({ title, description, className }: PageHeader
       </div>
       
       <div className="container mx-auto relative z-10">
-        <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-20px" }}
+          transition={{ duration: 0.6 }}
+          className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
+        >
           {title}
-        </h1>
+        </motion.h1>
         {description && (
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 font-light animate-in fade-in slide-in-from-bottom-5 duration-700 delay-150">
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 font-light"
+          >
             {description}
-          </p>
+          </motion.p>
         )}
       </div>
     </div>

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Check, Fuel, Settings, Users, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -31,7 +32,13 @@ export default function VehicleCard({
   idealFor,
 }: VehicleCardProps) {
   return (
-    <div className="bg-card border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full group">
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="bg-card border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full group"
+    >
       <div className="relative h-56 overflow-hidden bg-muted">
         <Image
           src={image}
@@ -102,7 +109,7 @@ export default function VehicleCard({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

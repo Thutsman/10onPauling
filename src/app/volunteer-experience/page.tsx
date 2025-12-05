@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Heart, Camera, Globe, CheckCircle2, ArrowRight, Play } from "lucide-react";
+import FadeIn from "@/components/animations/FadeIn";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 import ProgramCard from "@/components/volunteer/ProgramCard";
@@ -97,79 +98,83 @@ export default function VolunteerPage() {
       {/* Introduction */}
       <section className="py-24">
         <div className="container mx-auto px-4">
-           <div className="max-w-4xl mx-auto text-center">
-             <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary mb-6">
-               Why Volunteer with 10 On Pauling?
-             </h2>
-             <p className="text-lg text-muted-foreground leading-relaxed mb-12">
-               We believe that travel should be transformative. By connecting you with authentic, grassroots initiatives, we ensure your skills and passion are directed where they are needed most. Whether you're teaching a child to read or tracking endangered wildlife, every moment counts.
-             </p>
-           </div>
+           <FadeIn fullWidth>
+             <div className="max-w-4xl mx-auto text-center">
+               <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary mb-6">
+                 Why Volunteer with 10 On Pauling?
+               </h2>
+               <p className="text-lg text-muted-foreground leading-relaxed mb-12">
+                 We believe that travel should be transformative. By connecting you with authentic, grassroots initiatives, we ensure your skills and passion are directed where they are needed most. Whether you're teaching a child to read or tracking endangered wildlife, every moment counts.
+               </p>
+             </div>
+           </FadeIn>
         </div>
       </section>
 
       {/* Programs Grid */}
       <section className="py-24 bg-muted/30" id="programs">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary mb-4">Our Volunteer Streams</h2>
-            <p className="text-muted-foreground">Choose the path that speaks to your heart.</p>
-          </div>
+          <FadeIn fullWidth>
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary mb-4">Our Volunteer Streams</h2>
+              <p className="text-muted-foreground">Choose the path that speaks to your heart.</p>
+            </div>
+          </FadeIn>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <ProgramCard
-              title="ILife Stream"
-              price="$1,000/week"
-              description="Empower the next generation through education and community support initiatives."
-              image="/images/volunteer/programs/ilife-stream.jpg"
-              icon={Heart}
-              focusAreas={["Community Upliftment", "Youth Empowerment", "Education Support", "Nutrition"]}
-              whatYoullDo={[
+            {[{
+              title: "ILife Stream",
+              price: "$1,000/week",
+              description: "Empower the next generation through education and community support initiatives.",
+              image: "/images/volunteer/programs/ilife-stream.jpg",
+              icon: Heart,
+              focusAreas: ["Community Upliftment", "Youth Empowerment", "Education Support", "Nutrition"],
+              whatYoullDo: [
                 "Assist in local classrooms",
                 "Facilitate after-school sports",
                 "Support community garden projects",
                 "Help with nutritional programs"
-              ]}
-              whoShouldApply="Ideal for students, teachers, and anyone with a passion for people and community development."
-              color="border-earth/20"
-              accentColor="text-earth"
-            />
-
-            <ProgramCard
-              title="Photography Stream"
-              price="$1,000/week"
-              description="Capture the untold stories of Zimbabwe's wildlife and people while building your portfolio."
-              image="/images/volunteer/programs/photography-stream.jpeg"
-              icon={Camera}
-              focusAreas={["Wildlife Photography", "Conservation Storytelling", "Media Documentation", "Portfolio Building"]}
-              whatYoullDo={[
+              ],
+              whoShouldApply: "Ideal for students, teachers, and anyone with a passion for people and community development.",
+              color: "border-earth/20",
+              accentColor: "text-earth",
+            }, {
+              title: "Photography Stream",
+              price: "$1,000/week",
+              description: "Capture the untold stories of Zimbabwe's wildlife and people while building your portfolio.",
+              image: "/images/volunteer/programs/photography-stream.jpeg",
+              icon: Camera,
+              focusAreas: ["Wildlife Photography", "Conservation Storytelling", "Media Documentation", "Portfolio Building"],
+              whatYoullDo: [
                 "Document wildlife behavior",
                 "Create visual content for NGOs",
                 "Receive professional mentorship",
                 "Edit and curate your portfolio"
-              ]}
-              whoShouldApply="Perfect for aspiring photographers, content creators, and visual storytellers."
-              color="border-primary/20"
-              accentColor="text-primary"
-            />
-
-            <ProgramCard
-              title="Conservation Stream"
-              price="$1,000/week"
-              description="Join the frontline of wildlife protection and ecological sustainability efforts."
-              image="/images/volunteer/programs/conservation-stream.jpeg"
-              icon={Globe}
-              focusAreas={["Wildlife Monitoring", "Anti-Poaching Support", "Ecological Surveys", "Sustainability"]}
-              whatYoullDo={[
+              ],
+              whoShouldApply: "Perfect for aspiring photographers, content creators, and visual storytellers.",
+              color: "border-primary/20",
+              accentColor: "text-primary",
+            }, {
+              title: "Conservation Stream",
+              price: "$1,000/week",
+              description: "Join the frontline of wildlife protection and ecological sustainability efforts.",
+              image: "/images/volunteer/programs/conservation-stream.jpeg",
+              icon: Globe,
+              focusAreas: ["Wildlife Monitoring", "Anti-Poaching Support", "Ecological Surveys", "Sustainability"],
+              whatYoullDo: [
                 "Track key species in the field",
                 "Assist with snare sweeps",
                 "Conduct biodiversity surveys",
                 "Maintain park infrastructure"
-              ]}
-              whoShouldApply="Suited for nature lovers, biology students, and those wanting hands-on conservation experience."
-              color="border-safari/20"
-              accentColor="text-safari"
-            />
+              ],
+              whoShouldApply: "Suited for nature lovers, biology students, and those wanting hands-on conservation experience.",
+              color: "border-safari/20",
+              accentColor: "text-safari",
+            }].map((program, index) => (
+              <FadeIn key={program.title} delay={0.1 * index} className="h-full" fullWidth>
+                <ProgramCard {...program} />
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
@@ -184,24 +189,24 @@ export default function VolunteerPage() {
       <section className="py-24 bg-secondary text-secondary-foreground">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-             <div className="relative h-[500px] rounded-2xl overflow-hidden border-4 border-white/10">
+             <FadeIn direction="left" className="relative h-[500px] rounded-2xl overflow-hidden border-4 border-white/10" fullWidth>
                 <Image
                   src="/images/volunteer/volunteer-accommodation.jpeg"
                   alt="Luxury accommodation at 10 On Pauling - Your home away from home during your volunteer experience"
                   fill
                   className="object-cover"
                 />
-             </div>
-             <div>
-               <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
+             </FadeIn>
+             <FadeIn direction="right" className="space-y-4">
+               <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">
                  Your Home Away From Home
                </h2>
-               <p className="text-white/80 mb-8 leading-relaxed">
+               <p className="text-white/80 leading-relaxed">
                  Unlike typical volunteer programs, we don't believe you need to rough it to make a difference. Return each day to the comfort and serenity of 10 On Pauling.
                </p>
                
-               <h3 className="font-bold text-xl text-white mb-4">What's Included:</h3>
-               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+               <h3 className="font-bold text-xl text-white">What's Included:</h3>
+               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                  {[
                    "Luxury Accommodation",
                    "Airport Transfers",
@@ -218,7 +223,7 @@ export default function VolunteerPage() {
                    </li>
                  ))}
                </ul>
-             </div>
+             </FadeIn>
           </div>
         </div>
       </section>
@@ -232,20 +237,22 @@ export default function VolunteerPage() {
             <Image src="/images/hero/hero-1.jpg" alt="Background" fill className="object-cover" />
          </div>
          <div className="container mx-auto px-4 relative z-10">
-            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-              Ready to Make an Impact?
-            </h2>
-            <p className="text-xl mb-10 max-w-2xl mx-auto opacity-90">
-              Join us in Bulawayo for an experience that will change your life and the lives of others.
-            </p>
-            <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 text-lg px-10 py-8 h-auto shadow-xl" asChild>
-              <a href="mailto:volunteer@10onpauling.com">
-                Apply Now <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
-            <p className="mt-6 text-sm font-semibold opacity-70">
-              Questions? Email us at volunteer@10onpauling.com
-            </p>
+            <FadeIn fullWidth>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
+                Ready to Make an Impact?
+              </h2>
+              <p className="text-xl mb-10 max-w-2xl mx-auto opacity-90">
+                Join us in Bulawayo for an experience that will change your life and the lives of others.
+              </p>
+              <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 text-lg px-10 py-8 h-auto shadow-xl" asChild>
+                <a href="mailto:volunteer@10onpauling.com">
+                  Apply Now <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+              <p className="mt-6 text-sm font-semibold opacity-70">
+                Questions? Email us at volunteer@10onpauling.com
+              </p>
+            </FadeIn>
          </div>
       </section>
     </div>
