@@ -23,6 +23,11 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const pathname = usePathname();
 
+  // Hide navbar on admin pages
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
+
   React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);

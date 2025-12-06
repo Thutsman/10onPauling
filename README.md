@@ -29,6 +29,37 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Admin Bookings Management
+
+The project includes an admin page for managing bookings at `/admin/bookings`.
+
+### Setup
+
+1. **Environment Variable**: Add the following to your `.env.local` file:
+   ```
+   NEXT_PUBLIC_ADMIN_PASSWORD=your-secure-password-here
+   ```
+
+2. **Supabase Table**: Ensure your `stay_bookings` table has a `status` column:
+   ```sql
+   ALTER TABLE stay_bookings 
+   ADD COLUMN status TEXT DEFAULT 'pending';
+   ```
+
+### Access
+
+- Navigate to: `http://localhost:3000/admin/bookings` (development)
+- Or: `https://yourdomain.com/admin/bookings` (production)
+- Enter the admin password set in `NEXT_PUBLIC_ADMIN_PASSWORD`
+
+### Features
+
+- View all bookings in a table format
+- Mark bookings as "booked" status
+- Filter by status (pending/booked)
+- View booking statistics
+- Session-based authentication (clears on browser close)
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

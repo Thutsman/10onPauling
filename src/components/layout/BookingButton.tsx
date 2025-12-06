@@ -7,6 +7,7 @@ import { CalendarCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import BookingForm from "@/components/shared/BookingForm";
+import { usePathname } from "next/navigation";
 
 interface BookingButtonProps {
   className?: string;
@@ -16,6 +17,12 @@ interface BookingButtonProps {
 export default function BookingButton({ className, mode = "inline" }: BookingButtonProps) {
   const [isVisible, setIsVisible] = React.useState(true);
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  // Hide booking button on admin routes
+  if (pathname.startsWith("/admin")) {
+    return null;
+  }
 
   // Logic to hide floating button when footer is reached could be added here
   // For now, we just implement the styles
