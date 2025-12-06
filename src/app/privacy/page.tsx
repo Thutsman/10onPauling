@@ -44,7 +44,7 @@ const sections = [
   {
     title: "Contact Us",
     items: [
-      "Have questions or requests? Reach us at info@10onpauling.com or +263 12 345 6789.",
+      "Have questions or requests? Reach us at info@10onpaulinghotel.com or +263 71 070 6054.",
       "10 Pauling Road, Suburbs, Bulawayo, Zimbabwe.",
     ],
   },
