@@ -103,7 +103,7 @@ export default function Footer() {
                   <Facebook className="w-5 h-5 text-white" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/10onpauling?igsh=MTBwYmhrYjh1b2llZA=="
                   className="p-2 rounded-full transition-all duration-300 shadow-md"
                   aria-label="Instagram"
                   target="_blank"

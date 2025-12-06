@@ -146,8 +146,12 @@ export default function AdminBookingsPage() {
   };
 
   const currentBookings = activeTab === "stay" ? stayBookings : carBookings;
-  const pendingBookings = currentBookings.filter((b: any) => !b.status || b.status === "pending");
-  const bookedBookings = currentBookings.filter((b: any) => b.status === "booked" || b.status === "confirmed");
+  const pendingBookings = currentBookings.filter(
+    (b: any) => !b.status || b.status === "pending" || b.status === "held"
+  );
+  const bookedBookings = currentBookings.filter(
+    (b: any) => b.status === "booked" || b.status === "confirmed"
+  );
 
   if (!isAuthenticated) {
     return (
@@ -396,7 +400,7 @@ export default function AdminBookingsPage() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
                           className={`px-2 py-1 rounded-full text-xs font-medium ${
-                            booking.status === "booked" || booking.status === "confirmed"
+                            booking.status === "confirmed"
                               ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
                               : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400"
                           }`}
@@ -406,13 +410,13 @@ export default function AdminBookingsPage() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex gap-2">
-                          {booking.status !== "booked" && booking.status !== "confirmed" && (
+                          {booking.status !== "confirmed" && (
                             <Button
                               size="sm"
                               onClick={() =>
                                 updateBookingStatus(
                                   booking.id,
-                                  activeTab === "stay" ? "booked" : "confirmed",
+                                  "confirmed",
                                   activeTab
                                 )
                               }
@@ -427,12 +431,12 @@ export default function AdminBookingsPage() {
                               ) : (
                                 <>
                                   <CheckCircle2 className="w-3 h-3 mr-1" />
-                                  {activeTab === "stay" ? "Mark as Booked" : "Mark as Confirmed"}
+                                  Mark as Confirmed
                                 </>
                               )}
                             </Button>
                           )}
-                          {(booking.status === "booked" || booking.status === "confirmed") && (
+                          {booking.status === "confirmed" && (
                             <span className="text-xs text-muted-foreground flex items-center">
                               <CheckCircle2 className="w-4 h-4 mr-1 text-green-600" />
                               Confirmed
