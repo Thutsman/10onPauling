@@ -67,7 +67,13 @@ export default function FinalCTA() {
               className="text-lg px-10 py-7 h-auto bg-transparent border-2 border-white text-white hover:bg-white hover:text-secondary transition-all shadow-lg"
               asChild
             >
-              <Link href="/contact">Contact Us</Link>
+              <Link
+                href="https://wa.me/263710706054?text=Hi%2010%20On%20Pauling%2C%20I%27d%20like%20to%20chat%20about%20a%20booking."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact Us
+              </Link>
             </Button>
           </div>
         </motion.div>

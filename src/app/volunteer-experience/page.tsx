@@ -245,12 +245,16 @@ export default function VolunteerPage() {
                 Join us in Bulawayo for an experience that will change your life and the lives of others.
               </p>
               <Button size="lg" className="bg-secondary text-white hover:bg-secondary/90 text-lg px-10 py-8 h-auto shadow-xl" asChild>
-                <a href="mailto:volunteer@10onpauling.com">
+                <a
+                  href="https://wa.me/263710706054?text=Hi%2010%20On%20Pauling%2C%20I%27d%20like%20to%20apply%20for%20a%20volunteer%20program."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Apply Now <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
               <p className="mt-6 text-sm font-semibold opacity-70">
-                Questions? Email us at volunteer@10onpauling.com
+                Questions? Email us at Info@10onpaulinghotel.com
               </p>
             </FadeIn>
          </div>

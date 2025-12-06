@@ -89,36 +89,40 @@ export default function BowerySection() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[90vh] p-0">
-                <DialogHeader className="px-6 pt-6 pb-4 border-b">
-                  <DialogTitle className="text-2xl font-heading">
-                    The Bowery Restaurant Menu
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="relative w-full h-[75vh] overflow-hidden">
-                  <iframe
-                    src="/menu/bowery-menu.pdf"
-                    className="w-full h-full border-0"
-                    title="The Bowery Restaurant Menu"
-                  />
-                </div>
-                <div className="px-6 pb-6 pt-4 border-t flex justify-end">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    asChild
-                    className="gap-2"
-                  >
-                    <a
-                      href="/menu/bowery-menu.pdf"
-                      download="bowery-restaurant-menu.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
+              <DialogContent 
+                className="!fixed !inset-0 !top-0 !left-0 !translate-x-0 !translate-y-0 !max-w-none !w-screen !h-screen !max-h-screen p-0 !rounded-none"
+              >
+                <div className="flex flex-col h-screen w-screen">
+                  <DialogHeader className="px-6 pt-6 pb-4 border-b shrink-0">
+                    <DialogTitle className="text-2xl font-heading">
+                      The Bowery Restaurant Menu
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="flex-1 w-full min-h-0">
+                    <iframe
+                      src="/menu/bowery-menu.pdf"
+                      className="w-full h-full border-0"
+                      title="The Bowery Restaurant Menu"
+                    />
+                  </div>
+                  <div className="px-6 pb-6 pt-4 border-t flex justify-end shrink-0">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      asChild
+                      className="gap-2"
                     >
-                      <Download className="w-4 h-4" />
-                      Download Menu
-                    </a>
-                  </Button>
+                      <a
+                        href="/menu/bowery-menu.pdf"
+                        download="bowery-restaurant-menu.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Download className="w-4 h-4" />
+                        Download Menu
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </DialogContent>
             </Dialog>

@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, ArrowRight, LucideIcon, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface Amenity {
   text: string;
@@ -37,6 +38,11 @@ export default function ProgramCard({
   accentColor,
 }: ProgramCardProps) {
   const [isExpanded, setIsExpanded] = React.useState(false);
+
+  const whatsappLink = React.useMemo(() => {
+    const message = `Hi 10 On Pauling, I'd like to apply for the ${title} volunteer stream.`;
+    return `https://wa.me/263710706054?text=${encodeURIComponent(message)}`;
+  }, [title]);
 
   return (
     <div className={cn("rounded-2xl overflow-hidden bg-card border-2 transition-all duration-300 hover:shadow-xl flex flex-col h-full", color)}>
@@ -114,8 +120,10 @@ export default function ProgramCard({
             )}
           </AnimatePresence>
 
-          <Button className={cn("w-full text-white hover:opacity-90", accentColor.replace('text-', 'bg-'))}>
-            Apply Now <ArrowRight className="ml-2 w-4 h-4" />
+          <Button className="w-full bg-primary text-white hover:bg-primary/90 h-12 text-base font-semibold" asChild>
+            <Link href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              Apply Now <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
           </Button>
         </div>
       </div>

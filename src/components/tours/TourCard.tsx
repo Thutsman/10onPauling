@@ -143,8 +143,20 @@ export default function TourCard({
                             ))}
                           </ul>
                         </div>
-                        <Button size="sm" className="w-full sm:w-auto bg-primary text-white hover:bg-primary/90">
-                          Book This Tour
+                        <Button
+                          size="sm"
+                          className="w-full sm:w-auto bg-primary text-white hover:bg-primary/90"
+                          asChild
+                        >
+                          <a
+                            href={`https://wa.me/263710706054?text=${encodeURIComponent(
+                              `Hi 10 On Pauling, I'd like to book the ${destination} - ${option.title} tour.`
+                            )}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Book This Tour
+                          </a>
                         </Button>
                       </div>
                     </motion.div>

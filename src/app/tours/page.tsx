@@ -19,7 +19,7 @@ export default function ToursPage() {
       <section className="container mx-auto px-4 py-16 space-y-16">
         
         {/* Victoria Falls */}
-        <FadeIn fullWidth>
+        <FadeIn fullWidth id="victoria-falls">
           <TourCard
             destination="Victoria Falls"
             tagline="One of the Seven Natural Wonders"
@@ -58,7 +58,7 @@ export default function ToursPage() {
         </FadeIn>
 
         {/* Hwange National Park */}
-        <FadeIn fullWidth delay={0.05}>
+        <FadeIn fullWidth id="hwange-national-park" delay={0.05}>
           <TourCard
             destination="Hwange National Park"
             tagline="Africa's Largest Elephant Population"
@@ -90,7 +90,7 @@ export default function ToursPage() {
         </FadeIn>
 
         {/* Matobo Hills */}
-        <FadeIn fullWidth delay={0.1}>
+        <FadeIn fullWidth id="matobo-hills" delay={0.1}>
           <TourCard
             destination="Matobo Hills"
             tagline="UNESCO World Heritage Site"
@@ -183,8 +183,18 @@ export default function ToursPage() {
                  <p className="text-sm opacity-80">Combine accommodation, car rental, and tours for the best value.</p>
               </div>
             </div>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-              Contact Reservations
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-white"
+              asChild
+            >
+              <a
+                href="https://wa.me/263710706054?text=Hi%2010%20On%20Pauling%2C%20I%27d%20like%20to%20plan%20a%20tour%20and%20need%20assistance%20with%20reservations."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact Reservations
+              </a>
             </Button>
           </FadeIn>
         </div>

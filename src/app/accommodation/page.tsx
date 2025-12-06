@@ -26,8 +26,18 @@ import { Button } from "@/components/ui/button";
 import PageHeader from "@/components/shared/PageHeader";
 import SuiteCard from "@/components/accommodation/SuiteCard";
 import FadeIn from "@/components/animations/FadeIn";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import BookingForm from "@/components/shared/BookingForm";
 
 export default function AccommodationPage() {
+  const [isAvailabilityOpen, setIsAvailabilityOpen] = React.useState(false);
+
   return (
     <div className="bg-background min-h-screen">
       <PageHeader
@@ -224,17 +234,39 @@ export default function AccommodationPage() {
                 Have special requirements or need assistance planning your stay? Our team is here to help you create the perfect itinerary.
               </p>
               <div className="flex flex-col gap-4">
-                 <Button size="lg" className="w-full md:w-auto bg-primary hover:bg-primary/90 text-white text-lg h-12">
-                    Check Availability
+                 <Button
+                   size="lg"
+                   className="w-full md:w-auto bg-primary hover:bg-primary/90 text-white text-lg h-12"
+                   onClick={() => setIsAvailabilityOpen(true)}
+                 >
+                   Check Availability
                  </Button>
                  <Button variant="outline" size="lg" className="w-full md:w-auto h-12" asChild>
-                   <Link href="/contact">Special Request</Link>
+                   <Link
+                     href="https://wa.me/263710706054?text=Hi%2010%20On%20Pauling%2C%20I%27d%20like%20help%20with%20a%20special%20request%20for%20my%20stay."
+                     target="_blank"
+                     rel="noopener noreferrer"
+                   >
+                     Special Request
+                   </Link>
                  </Button>
               </div>
             </div>
           </div>
         </FadeIn>
       </section>
+
+      <Dialog open={isAvailabilityOpen} onOpenChange={setIsAvailabilityOpen}>
+        <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-heading">Book Your Stay</DialogTitle>
+            <DialogDescription>
+              Fill out the form below to request a reservation. We&apos;ll confirm your booking within 24 hours.
+            </DialogDescription>
+          </DialogHeader>
+          <BookingForm onSuccess={() => setIsAvailabilityOpen(false)} />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

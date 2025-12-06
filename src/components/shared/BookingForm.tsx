@@ -14,9 +14,10 @@ import { supabase } from "@/lib/supabase";
 interface BookingFormProps {
   onSuccess?: () => void;
   className?: string;
+  initialRoomType?: string;
 }
 
-export default function BookingForm({ onSuccess, className }: BookingFormProps) {
+export default function BookingForm({ onSuccess, className, initialRoomType }: BookingFormProps) {
   const [formData, setFormData] = React.useState({
     name: "",
     email: "",
@@ -24,7 +25,7 @@ export default function BookingForm({ onSuccess, className }: BookingFormProps) 
     countryCode: "+263",
     checkIn: "",
     checkOut: "",
-    roomType: "",
+    roomType: initialRoomType ?? "",
     guests: "1",
     specialRequests: "",
   });
@@ -33,6 +34,13 @@ export default function BookingForm({ onSuccess, className }: BookingFormProps) 
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [showSuccess, setShowSuccess] = React.useState(false);
   const [submitError, setSubmitError] = React.useState<string>("");
+
+  React.useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      roomType: initialRoomType ?? "",
+    }));
+  }, [initialRoomType]);
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
