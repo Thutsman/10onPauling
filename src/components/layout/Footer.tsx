@@ -59,6 +59,7 @@ export default function Footer() {
                 {[
                     { label: "Accommodation", href: "/accommodation" },
                     { label: "Tours & Safaris", href: "/tours" },
+                    { label: "Gallery", href: "/gallery" },
                     { label: "Volunteer", href: "/volunteer-experience" },
                     { label: "Car Rental", href: "/car-rental" },
                     { label: "Privacy Policy", href: "/privacy" },

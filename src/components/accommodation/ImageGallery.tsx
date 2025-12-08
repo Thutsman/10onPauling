@@ -140,7 +140,10 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
               <X className="h-8 w-8" />
             </Button>
 
-            <div className="relative h-[85vh] w-full max-w-7xl" onClick={(e) => e.stopPropagation()}>
+            <div
+              className="relative h-[calc(95vh-120px)] w-full max-w-[min(1800px,98vw)]"
+              onClick={(e) => e.stopPropagation()}
+            >
               <Image
                 src={images[currentIndex]}
                 alt={`${alt} - Fullscreen`}

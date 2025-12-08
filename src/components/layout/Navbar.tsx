@@ -15,6 +15,7 @@ const navItems = [
   { name: "Accommodation", href: "/accommodation" },
   { name: "Volunteer", href: "/volunteer-experience" },
   { name: "Tours", href: "/tours" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Car Rental", href: "/car-rental" },
 ];
 
