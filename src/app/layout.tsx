@@ -27,6 +27,8 @@ export const viewport: Viewport = {
   themeColor: "#D2691E",
 };
 
+const faviconSvg = "/images/logo/logo%20test.svg";
+
 export const metadata: Metadata = {
   title: "10 On Pauling Hotel - Bulawayo's #1 Boutique Hotel | Zimbabwe",
   description: "Award-winning luxury accommodation in Bulawayo. Experience Zimbabwe's best with Victoria Falls tours, Hwange safaris, volunteer programs, and premium car rental.",
@@ -65,11 +67,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/images/logo/logo.svg", type: "image/svg+xml" },
-      { url: "/images/logo/logo.svg", type: "image/svg+xml", sizes: "any" },
+      { url: faviconSvg, type: "image/svg+xml" },
+      { url: faviconSvg, type: "image/svg+xml", sizes: "any" },
     ],
-    apple: "/images/logo/logo.svg",
-    shortcut: "/images/logo/logo.svg",
+    apple: [{ url: faviconSvg, type: "image/svg+xml", sizes: "any" }],
+    shortcut: [{ url: faviconSvg, type: "image/svg+xml" }],
+    other: [{ rel: "mask-icon", url: faviconSvg, color: "#D2691E" }],
   },
   robots: {
     index: true,
