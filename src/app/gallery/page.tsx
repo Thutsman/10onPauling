@@ -153,17 +153,17 @@ export default function GalleryPage() {
         }}
       >
         <DialogContent
-          className="w-full sm:max-w-5xl max-h-[90vh] overflow-y-auto p-0 md:p-4"
+          className="max-w-[calc(100vw-1rem)] sm:max-w-5xl max-h-[90vh] overflow-y-auto overflow-x-hidden p-0 sm:p-4"
         >
           {activeCategory && (
-            <div
-              className="w-full mx-auto px-3 pb-4 space-y-3"
-            >
-              <DialogHeader className="pb-2 px-1 md:px-0">
-                <DialogTitle>{activeCategory.title}</DialogTitle>
-                <DialogDescription>{activeCategory.description}</DialogDescription>
+            <div className="w-full max-w-full mx-auto px-2 sm:px-3 pb-4 space-y-3 overflow-x-hidden">
+              <DialogHeader className="pb-2 px-1 sm:px-0">
+                <DialogTitle className="text-base sm:text-lg">{activeCategory.title}</DialogTitle>
+                <DialogDescription className="text-xs sm:text-sm">{activeCategory.description}</DialogDescription>
               </DialogHeader>
-              <ImageGallery images={activeCategory.images} alt={`${activeCategory.title} gallery`} />
+              <div className="w-full max-w-full overflow-x-hidden">
+                <ImageGallery images={activeCategory.images} alt={`${activeCategory.title} gallery`} />
+              </div>
             </div>
           )}
         </DialogContent>

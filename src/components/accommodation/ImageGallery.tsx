@@ -68,10 +68,10 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
   }, [isLightboxOpen, handleKeyDown]);
 
   return (
-    <div className="space-y-4">
+    <div className="w-full max-w-full space-y-4 overflow-x-hidden">
       {/* Main Image */}
       <div 
-        className="relative aspect-[4/3] w-full max-h-[70vh] overflow-hidden rounded-xl bg-muted group cursor-pointer"
+        className="relative aspect-[4/3] w-full max-w-full max-h-[70vh] overflow-hidden rounded-xl bg-muted group cursor-pointer"
         onClick={() => setIsLightboxOpen(true)}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -102,47 +102,49 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
         </div>
 
         {/* Navigation Arrows */}
-        <div className="absolute inset-0 flex items-center justify-between p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="absolute inset-0 flex items-center justify-between p-1 sm:p-2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto">
           <Button
             variant="ghost"
             size="icon"
-            className="bg-black/30 text-white hover:bg-black/50 rounded-full h-8 w-8"
+            className="bg-black/30 text-white hover:bg-black/50 rounded-full h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 pointer-events-auto"
             onClick={prevSlide}
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="bg-black/30 text-white hover:bg-black/50 rounded-full h-8 w-8"
+            className="bg-black/30 text-white hover:bg-black/50 rounded-full h-7 w-7 sm:h-8 sm:w-8 flex-shrink-0 pointer-events-auto"
             onClick={nextSlide}
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
           </Button>
         </div>
       </div>
 
       {/* Thumbnails */}
-      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-        {images.map((img, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            className={cn(
-              "relative aspect-[4/3] w-20 flex-shrink-0 overflow-hidden rounded-md transition-all",
-              idx === currentIndex 
-                ? "ring-2 ring-primary ring-offset-2" 
-                : "opacity-70 hover:opacity-100"
-            )}
-          >
-            <Image
-              src={img}
-              alt={`${alt} thumbnail ${idx + 1}`}
-              fill
-              className="object-cover"
-            />
-          </button>
-        ))}
+      <div className="w-full max-w-full overflow-x-auto pb-2 scrollbar-hide -mx-1 px-1">
+        <div className="flex gap-2 min-w-min">
+          {images.map((img, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={cn(
+                "relative aspect-[4/3] w-16 sm:w-20 flex-shrink-0 overflow-hidden rounded-md transition-all",
+                idx === currentIndex 
+                  ? "ring-2 ring-primary ring-offset-1 sm:ring-offset-2" 
+                  : "opacity-70 hover:opacity-100"
+              )}
+            >
+              <Image
+                src={img}
+                alt={`${alt} thumbnail ${idx + 1}`}
+                fill
+                className="object-cover"
+              />
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Lightbox */}
