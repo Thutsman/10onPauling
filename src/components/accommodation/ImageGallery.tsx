@@ -71,7 +71,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
     <div className="space-y-4">
       {/* Main Image */}
       <div 
-        className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted group cursor-pointer"
+        className="relative aspect-[4/3] w-full max-h-[70vh] overflow-hidden rounded-xl bg-muted group cursor-pointer"
         onClick={() => setIsLightboxOpen(true)}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}

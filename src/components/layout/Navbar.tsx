@@ -81,17 +81,17 @@ export default function Navbar() {
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-40 w-full transition-all duration-500",
-          "pt-[max(0.75rem,env(safe-area-inset-top))]",
+          "pt-[max(0.65rem,env(safe-area-inset-top))]",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md shadow-md pb-2 md:pb-1"
-            : "bg-transparent pb-3 md:pb-2"
+            ? "bg-background/95 backdrop-blur-md shadow-md pb-1.5 md:pb-1"
+            : "bg-transparent pb-2.5 md:pb-1.5"
         )}
       >
         <div
           className={cn(
-            "container mx-auto flex items-center justify-between gap-3 px-4 md:px-8",
+            "container mx-auto flex items-center justify-between gap-3 px-4 md:px-6",
             "pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]",
-            "min-h-[64px]"
+            "min-h-[60px]"
           )}
         >
           <Link href="/" className="relative z-50 flex items-center group shrink-0">
@@ -102,7 +102,7 @@ export default function Navbar() {
                 alt="10 On Pauling Logo"
                 width={720}
                 height={240}
-                className="h-20 w-auto transition-opacity duration-300"
+                className="h-18 w-auto transition-opacity duration-300"
                 priority
               />
             </div>
@@ -114,7 +114,7 @@ export default function Navbar() {
                 width={720}
                 height={240}
                 className={cn(
-                  "h-24 lg:h-36 w-auto transition-opacity duration-300",
+                  "h-22 lg:h-32 w-auto transition-opacity duration-300",
                   isScrolled ? "opacity-100" : "opacity-100 drop-shadow-md"
                 )}
                 priority

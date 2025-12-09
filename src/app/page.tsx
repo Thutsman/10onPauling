@@ -22,6 +22,50 @@ export default function Home() {
       {/* Statistics Cards */}
       <StatsCards />
 
+      {/* Hotel Video */}
+      <section className="relative py-20 bg-gradient-to-b from-white via-sandstone/25 to-white">
+        <div className="container px-4 mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8"
+          >
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/70">
+              Take a quick look inside
+            </p>
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-secondary mt-2">
+              A Taste of 10 On Pauling
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+              Step into our cafe experience—rich aromas, warm interiors, and relaxed seating that set the tone for your stay.
+            </p>
+          </motion.div>
+
+          <div className="max-w-[90vw] md:max-w-[1100px] mx-auto px-4 md:px-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5 }}
+              className="relative aspect-video w-full max-h-[70vh] overflow-hidden rounded-2xl shadow-2xl border border-border/50 bg-black"
+            >
+              <video
+                className="h-full w-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+                poster="/images/gallery/exterior/exterior-1.jpeg"
+              >
+                <source src="/videos/hotel-tour.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Grid */}
       <section
         id="zimbabwe-features"

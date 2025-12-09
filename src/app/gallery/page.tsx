@@ -40,6 +40,8 @@ const galleryCategories: GalleryCategory[] = [
       "/images/gallery/exterior/exterior-2.jpeg",
       "/images/gallery/exterior/exterior-3.jpeg",
       "/images/gallery/exterior/exterior-4.jpeg",
+      "/images/gallery/exterior/exterior-5.jpeg",
+      "/images/gallery/exterior/exterior-6.jpeg",
     ],
   },
   {
@@ -60,6 +62,8 @@ const galleryCategories: GalleryCategory[] = [
       "/images/gallery/reception/reception-2.jpeg",
       "/images/gallery/reception/reception-3.jpeg",
       "/images/gallery/reception/reception-4.jpeg",
+      "/images/gallery/reception/reception-5.jpeg",
+      "/images/gallery/reception/reception-6.jpeg",
     ],
   },
   {
@@ -148,15 +152,19 @@ export default function GalleryPage() {
           if (!open) setActiveCategory(null);
         }}
       >
-        <DialogContent className="w-[95vw] h-[95vh] max-w-[1800px] p-0 md:p-2">
+        <DialogContent
+          className="w-full sm:max-w-5xl max-h-[90vh] overflow-y-auto p-0 md:p-4"
+        >
           {activeCategory && (
-            <>
-              <DialogHeader className="pb-2">
+            <div
+              className="w-full mx-auto px-3 pb-4 space-y-3"
+            >
+              <DialogHeader className="pb-2 px-1 md:px-0">
                 <DialogTitle>{activeCategory.title}</DialogTitle>
                 <DialogDescription>{activeCategory.description}</DialogDescription>
               </DialogHeader>
               <ImageGallery images={activeCategory.images} alt={`${activeCategory.title} gallery`} />
-            </>
+            </div>
           )}
         </DialogContent>
       </Dialog>
