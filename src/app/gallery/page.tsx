@@ -76,7 +76,7 @@ const galleryCategories: GalleryCategory[] = [
     title: "Team & Moments",
     description: "Our friendly staff, behind-the-scenes moments, and the community that makes 10 On Pauling special.",
     images: [
-      "/images/gallery/staff/team-1.jpeg",
+      "/images/gallery/staff/team-1.jpg",
       "/images/gallery/staff/team-2.jpeg",
       "/images/gallery/staff/team-3.jpeg",
       "/images/gallery/staff/team-4.jpeg",
