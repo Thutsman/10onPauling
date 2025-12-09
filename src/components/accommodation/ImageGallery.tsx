@@ -15,6 +15,10 @@ interface ImageGalleryProps {
 export default function ImageGallery({ images, alt }: ImageGalleryProps) {
   const [currentIndex, setCurrentIndex] = React.useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = React.useState(false);
+  const touchStartX = React.useRef<number | null>(null);
+  const touchEndX = React.useRef<number | null>(null);
+
+  const swipeThreshold = 50;
 
   const nextSlide = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -31,6 +35,23 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
     if (e.key === "ArrowLeft") prevSlide();
     if (e.key === "Escape") setIsLightboxOpen(false);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchEndX.current = null;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    const distance = touchStartX.current - touchEndX.current;
+    if (Math.abs(distance) < swipeThreshold) return;
+    if (distance > 0) nextSlide();
+    else prevSlide();
+  };
 
   React.useEffect(() => {
     if (isLightboxOpen) {
@@ -52,6 +73,9 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
       <div 
         className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted group cursor-pointer"
         onClick={() => setIsLightboxOpen(true)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         <AnimatePresence mode="wait">
           <motion.div
@@ -74,7 +98,7 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
 
         {/* Hover Overlay with Zoom Icon */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-           <Maximize2 className="text-white drop-shadow-lg w-8 h-8" />
+          <Maximize2 className="text-white drop-shadow-lg w-8 h-8" />
         </div>
 
         {/* Navigation Arrows */}
@@ -128,21 +152,28 @@ export default function ImageGallery({ images, alt }: ImageGalleryProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm p-2 sm:p-6"
             onClick={() => setIsLightboxOpen(false)}
           >
             <Button
+              aria-label="Close gallery"
               variant="ghost"
               size="icon"
-              className="absolute top-4 right-4 text-white/70 hover:text-white hover:bg-white/10"
-              onClick={() => setIsLightboxOpen(false)}
+              className="absolute top-4 right-4 z-10 text-white/80 hover:text-white hover:bg-white/10"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsLightboxOpen(false);
+              }}
             >
               <X className="h-8 w-8" />
             </Button>
 
             <div
-              className="relative h-[calc(95vh-120px)] w-full max-w-[min(1800px,98vw)]"
+              className="relative w-full max-w-[min(1800px,95vw)] h-[70vh] sm:h-[80vh] lg:h-[90vh]"
               onClick={(e) => e.stopPropagation()}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               <Image
                 src={images[currentIndex]}
